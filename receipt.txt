@@ -1,0 +1,8 @@
+
+--- Order Summary ---
+Medium Stuffed (Stuffed Crust) | Meats: [Sausage] | Cheeses: [Cheese] | Toppings: [Spinach, Peppers] | Sauces: [Tomato] | $14.99
+large Strawberry Drink - $2.25
+2 Garlic Knots - $7.98
+----------------------
+Total: $25.22
+
