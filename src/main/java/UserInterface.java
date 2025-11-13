@@ -12,7 +12,7 @@ public class UserInterface {
 
         while (running) {
             System.out.println("\n==============================");
-            System.out.println(" Welcome to PIZZA-licious!");
+            System.out.println(" Welcome to THE YEAST WE CAN DO!");
             System.out.println("==============================");
             System.out.println("1 - Add Pizza");
             System.out.println("2 - Add Drink");
@@ -32,7 +32,7 @@ public class UserInterface {
             else if (choice.equals("5")) processCheckout();
             else if (choice.equals("6")) newOrder();
             else if (choice.equals("99")) {
-                System.out.println("Thank you for visiting PIZZA-licious!");
+                System.out.println("Thank you for visiting THE YEAST WE CAN DO!");
                 running = false;
             } else {
                 System.out.println("Invalid choice. Please try again.");
@@ -40,12 +40,16 @@ public class UserInterface {
         }
     }
 
+    // ADD PIZZA
     private void processAddPizza() {
         System.out.println("\n--- Add a Pizza ---");
+
         System.out.print("Size (Small/Medium/Large): ");
         String size = scanner.nextLine();
+
         System.out.print("Crust type: ");
         String crust = scanner.nextLine();
+
         System.out.print("Stuffed crust? (Y/N): ");
         boolean stuffed = scanner.nextLine().equalsIgnoreCase("Y");
 
@@ -71,20 +75,26 @@ public class UserInterface {
         System.out.println("Pizza added! " + pizza);
     }
 
+    // ADD DRINK
     private void processAddDrink() {
         System.out.println("\n--- Add a Drink ---");
+
         System.out.print("Drink size (Small/Medium/Large): ");
         String size = scanner.nextLine();
+
         System.out.print("Flavor: ");
         String flavor = scanner.nextLine();
 
         Drink drink = new Drink(size, flavor);
         currentOrder.addDrink(drink);
+
         System.out.println("Drink added: " + drink);
     }
 
+    // ADD GARLIC KNOTS
     private void processAddGarlicKnots() {
         System.out.print("\nEnter quantity of Garlic Knots: ");
+
         try {
             int qty = Integer.parseInt(scanner.nextLine());
             currentOrder.addGarlicKnots(qty);
@@ -94,23 +104,41 @@ public class UserInterface {
         }
     }
 
+    // CHECKOUT
+
     private void processCheckout() {
         System.out.println("\n--- Checkout ---");
         System.out.println(currentOrder);
-        saveReceipt();
-        newOrder();
+
+        saveReceipt();   // Save ONE receipt per order
+        newOrder();      // Reset for next customer
     }
 
+    // SAVE RECEIPT TO /receipts FOLDER
+
     private void saveReceipt() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("receipt.txt", true))) {
+        // Create receipts folder if needed
+        java.io.File folder = new java.io.File("receipts");
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+
+        // Create filename using date/time
+        java.time.LocalDateTime now = java.time.LocalDateTime.now();
+        java.time.format.DateTimeFormatter formatter =
+                java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+
+        String fileName = "receipts/" + now.format(formatter) + ".txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(currentOrder.toString());
-            writer.newLine();
-            System.out.println("Receipt saved successfully to receipt.txt!");
+            System.out.println("Receipt saved successfully to: " + fileName);
         } catch (IOException e) {
             System.out.println("Error saving receipt: " + e.getMessage());
         }
     }
 
+    // RESET ORDER
     private void newOrder() {
         currentOrder = new Order();
         System.out.println("New order started!");

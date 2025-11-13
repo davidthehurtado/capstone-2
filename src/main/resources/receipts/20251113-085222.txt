@@ -1,0 +1,6 @@
+
+--- Order Summary ---
+Large Cherry Drink - $2.25
+1 Garlic Knots - $3.99
+----------------------
+Total: $6.24

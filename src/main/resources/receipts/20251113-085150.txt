@@ -1,0 +1,5 @@
+
+--- Order Summary ---
+Small Stuffed (Stuffed Crust) | Meats: [Sausage] | Cheeses: [Mozzerella] | Toppings: [Peppers] | Sauces: [Tomato] | $12.99
+----------------------
+Total: $12.99
