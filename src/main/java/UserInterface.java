@@ -95,12 +95,7 @@ public class UserInterface {
         currentOrder.addDrink(drink);
 
         System.out.println("Drink added: " + drink);
-        String art = """
-                O
-                +
-                /\\
-                """;
-        System.out.println(art);
+
     }
 
     // ADD GARLIC KNOTS
@@ -117,7 +112,6 @@ public class UserInterface {
     }
 
     // CHECKOUT
-
     private void processCheckout() {
         System.out.println("\n--- Checkout ---");
         System.out.println(currentOrder);
@@ -126,8 +120,7 @@ public class UserInterface {
         newOrder();      // Reset for next customer
     }
 
-    // SAVE RECEIPT TO /receipts FOLDER
-
+    // SAVE RECEIPTS
     private void saveReceipt() {
 
         // Create filename using date/time
