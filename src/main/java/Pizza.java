@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Pizza {
-    private String size;
-    private String crust;
-    private boolean stuffedCrust;
-    private ArrayList<String> meats;
-    private ArrayList<String> cheeses;
-    private ArrayList<String> toppings;
-    private ArrayList<String> sauces;
+    private final String size;
+    private final String crust;
+    private final boolean stuffedCrust;
+    private final ArrayList<String> meats;
+    private final ArrayList<String> cheeses;
+    private final ArrayList<String> toppings;
+    private final ArrayList<String> sauces;
 
     // Constructor sets the main pizza settings
     public Pizza(String size, String crust, boolean stuffedCrust) {
