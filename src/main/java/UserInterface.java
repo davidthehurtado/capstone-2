@@ -11,9 +11,14 @@ public class UserInterface {
         boolean running = true;
 
         while (running) {
-            System.out.println("\n==============================");
-            System.out.println(" Welcome to THE YEAST WE CAN DO!");
-            System.out.println("==============================");
+            System.out.println("\n=======================================================");
+            System.out.println("                       WELCOME TO");
+            System.out.println("" +
+                    " ╔╦╗┬ ┬┌─┐  ╦ ╦┌─┐┌─┐┌─┐┌┬┐  ╦ ╦┌─┐  ╔═╗┌─┐┌┐┌  ╔╦╗┌─┐\n" +
+                    "  ║ ├─┤├┤   ╚╦╝├┤ ├─┤└─┐ │   ║║║├┤   ║  ├─┤│││   ║║│ │\n" +
+                    "  ╩ ┴ ┴└─┘   ╩ └─┘┴ ┴└─┘ ┴   ╚╩╝└─┘  ╚═╝┴ ┴┘└┘  ═╩╝└─┘");
+            System.out.println("                       PIZZA SHOP");
+            System.out.println("=======================================================");
             System.out.println("1 - Add Pizza");
             System.out.println("2 - Add Drink");
             System.out.println("3 - Add Garlic Knots");
@@ -32,7 +37,8 @@ public class UserInterface {
             else if (choice.equals("5")) processCheckout();
             else if (choice.equals("6")) newOrder();
             else if (choice.equals("99")) {
-                System.out.println("Thank you for visiting THE YEAST WE CAN DO!");
+                System.out.println("Thank you for visiting" +
+                        "");
                 running = false;
             } else {
                 System.out.println("Invalid choice. Please try again.");
@@ -89,6 +95,12 @@ public class UserInterface {
         currentOrder.addDrink(drink);
 
         System.out.println("Drink added: " + drink);
+        String art = """
+                O
+                +
+                /\\
+                """;
+        System.out.println(art);
     }
 
     // ADD GARLIC KNOTS
@@ -117,18 +129,13 @@ public class UserInterface {
     // SAVE RECEIPT TO /receipts FOLDER
 
     private void saveReceipt() {
-        // Create receipts folder if needed
-        java.io.File folder = new java.io.File("receipts");
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
 
         // Create filename using date/time
         java.time.LocalDateTime now = java.time.LocalDateTime.now();
         java.time.format.DateTimeFormatter formatter =
                 java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
 
-        String fileName = "receipts/" + now.format(formatter) + ".txt";
+        String fileName = "src/main/resources/receipts/" + now.format(formatter) + ".txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(currentOrder.toString());
