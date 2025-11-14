@@ -1,0 +1,6 @@
+
+--- Order Summary ---
+Medium Thin | Meats: [Sausage, Chicken] | Cheeses: [Cheddar] | Toppings: [Pepper] | Sauces: [Tomato] | $12.49
+1 Garlic Knots - $3.99
+----------------------
+Total: $16.48
